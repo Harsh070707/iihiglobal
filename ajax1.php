@@ -10,8 +10,10 @@ if(isset($_POST['id'])){
 	while ($sqli=mysqli_fetch_array($getemp)) {
 		$id=$sqli['id'];
 		$employee=$sqli['emp_name'];
-
-		echo "<option value'$id'>$employee</option>";
+		$sql1="SELECT * FROM company WHERE id=".$sqli['emp_comp_id'];
+		$getemp1=mysqli_query($con,$sql1);
+		$sqli1=mysqli_fetch_array($getemp1);
+		echo "<option value='$id'>$employee - ".$sqli1['comapny']."</option>";
 	}
 }
 
